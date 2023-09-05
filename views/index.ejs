@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./indexStyle.css">
+    <title>Contactos en MongoDB</title>
+</head>
+<body>
+    <h1>Aplicacion con MongoDB</h1>
+        <form id="contactForm" class= formulario_contactos action="agregar" method="post">
+            <input type="text" placeholder="name" name= "name">
+            <input type="text" placeholder="phone" name= "phone">            
+            <input type="text" placeholder="direction" name= "direction">
+            <input type="text" placeholder="email" name= "email">
+            <input type="submit" value="add contact">
+        </form>
+    <!-- <div id="confirmationModal" class="modal"> 
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <p> Contacto agregado exitosamente. </p>
+        </div>
+    </div> -->
+    <hr>
+    <%if(contactos.length == 0) { %>
+        <p> Lo siento, no hay contactos </p>
+    <% } %>
+     <% contactos.map(contacto => { %>
+        <div class="contacto">
+            <span><%= contacto.name %></span>
+            <span><%= contacto.phone %></span>
+            <span><%= contacto.direction %></span>
+            <span><%= contacto.email %></span>
+            <span><a href="/borrar/<%= contacto.id %>">Borrar</a></span>
+        </div>
+        <%}); %>
+         
+<script src="./scriptIndex.js"></script>
+</body>
+</html>
